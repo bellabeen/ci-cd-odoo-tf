@@ -84,7 +84,7 @@ resource "aws_efs_file_system_policy" "policy_data" {
 resource "aws_efs_access_point" "access_point_data" {
   file_system_id = aws_efs_file_system.efs_data.id
   root_directory {
-    path = "/"
+    path = "/opt/"
   }
   tags = {
     Name                  = "/opt/example_data/"
@@ -186,7 +186,7 @@ resource "aws_efs_file_system_policy" "policy_code" {
 resource "aws_efs_access_point" "access_point_code" {
   file_system_id = aws_efs_file_system.efs_code.id
   root_directory {
-    path = "/"
+    path = "/opt/"
   }
   tags = {
     Name                  = "/opt/code_code/"
@@ -288,7 +288,7 @@ resource "aws_efs_file_system_policy" "policy_session" {
 resource "aws_efs_access_point" "access_point_session" {
   file_system_id = aws_efs_file_system.efs_session.id
   root_directory {
-    path = "/"
+    path = "/opt/"
   }
   tags = {
     Name                  = "/opt/example_session/"
