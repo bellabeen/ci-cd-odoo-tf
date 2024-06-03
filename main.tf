@@ -102,23 +102,23 @@ module "sg" {
 # }
 
 # # Use Module Elastic Load Balancing
-# module "alb" {
-#   source = "./modules/ec2/alb"
+module "alb" {
+  source = "./modules/ec2/alb"
 
-#   # Provide necessary arguments
-#   vpc                 = module.vpc.vpc_id
-#   public_subnet_ids   = module.vpc.public_subnet_ids
-#   alb_security_group  = module.sg.alb_security_group_id
-#   alb_certificate_arn = module.acm_certificate.acm_certificate_arn
-# }
+  # Provide necessary arguments
+  vpc                 = module.vpc.vpc_id
+  public_subnet_ids   = module.vpc.public_subnet_ids
+  alb_security_group  = module.sg.alb_security_group_id
+  alb_certificate_arn = module.acm_certificate.acm_certificate_arn
+}
 
 # # Use Module WAF
-# module "waf" {
-#   source = "./modules/waf"
+module "waf" {
+  source = "./modules/waf"
 
-#   # You can provide necessary variables here
-#   alb_arn = module.alb.alb_arn
-# }
+  # You can provide necessary variables here
+  alb_arn = module.alb.alb_arn
+}
 
 # Use Module RDS Aurora
 module "rds_cluster" {
@@ -144,18 +144,18 @@ module "rds_cluster" {
 #   ami_app_id = "ami-08e4b984abde34a4f"
 # }
 
-# # Use Module Data Life Cycle Manager
-# module "dlm" {
-#   source = "./modules/ec2/dlm"
-# }
+# Use Module Data Life Cycle Manager
+module "dlm" {
+  source = "./modules/ec2/dlm"
+}
 
-# # Use Module EFS
-# module "efs" {
-#   source = "./modules/efs"
-#   vpc_id = module.vpc.vpc_id
-#   subnet_app_ids = module.vpc.private_ec2_subnet_ids
-#   efs_security_group_id = module.sg.efs_security_group_id
-# }
+# Use Module EFS
+module "efs" {
+  source = "./modules/efs"
+  vpc_id = module.vpc.vpc_id
+  subnet_app_ids = module.vpc.private_ec2_subnet_ids
+  efs_security_group_id = module.sg.efs_security_group_id
+}
 
 # # Use Module Route53
 # TODO: if use route53 uncomment this code
