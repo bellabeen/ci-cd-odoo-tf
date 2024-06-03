@@ -107,7 +107,7 @@ resource "aws_rds_cluster_instance" "example-db" {
   identifier                = "example-db"
   cluster_identifier        = aws_rds_cluster.example-cluster.id
   engine                     = "aurora-postgresql"   # Add this line
-  instance_class            = "db.t3.medium"
+  instance_class            = "db.t3.large"
   availability_zone         = "ap-southeast-1a"
   publicly_accessible       = false
   db_parameter_group_name   = aws_db_parameter_group.example-db-parameter-group.name
