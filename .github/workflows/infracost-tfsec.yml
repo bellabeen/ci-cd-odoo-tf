@@ -2,6 +2,19 @@ name: Check Infrastructure Security & Cost
 
 on: [pull_request]
 jobs:
+
+  # tfsec-pr-commenter:
+  #   name: tfsec PR commenter
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Clone repo
+  #       uses: actions/checkout@master
+  #     - name: tfsec
+  #       uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
+  #       with:
+  #         tfsec_args: --soft-fail
+  #         github_token: ${{ github.token }}
+
   tfsec:
     name: tfsec
     runs-on: ubuntu-latest
@@ -12,7 +25,7 @@ jobs:
           uses: aquasecurity/tfsec-action@v1.0.3
           with:
              soft_fail: true
-             working_directory: .
+            #  working_directory: .
              additional_args: --concise-output
 
   checkov:
